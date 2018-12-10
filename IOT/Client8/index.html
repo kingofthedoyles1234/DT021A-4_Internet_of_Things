@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">		
+        <title>MQTT Client</title>
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/foundation.css">
+    </head>
+	
+    <body>
+        <div id="header">
+            <div>
+                <a><img id="headerlogo" src="assets/Doyle_MQTT.png" style="width:95px;height:95px;"></a>
+                <span id="headertitle">MQTT Client Front End</span>
+            </div>
+        </div>
+        <div id="content" class="row">
+            <div class="large-12 columns conniMain">
+                <h3>Connection</h3>
+            </div>
+            <div class="large-12 columns" id="conniMain">
+                <div class="panel">
+                    <div class="row">
+                        <form id="frm1" class="custom">
+                            <div class="large-5 columns">
+                                <label>Broker URL</label>
+                                <input id="urlInput" type="text" value="broker.mqttdashboard.com">
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Port</label>
+                                <input id="portInput" type="text" value="8000"/>
+                            </div>
+                            <div class="large-5 columns">
+                                <label>ClientID</label>
+                                <input id="clientIdInput" type="text"/>
+                                <!--value="clientId-b3r9UTjzs8"-->
+                            </div>
+                        </form>
+                        <div class="large-10 columns"></div>
+                        <div class="large-2 columns">
+                            <button id = "connectButton" >Connect</button>
+                        </div>
+                        <div class="large-12 columns" id="connectionMessage"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="empty"></div>
+            <div class="large-12 columns conniMain">
+                <h3>Publish</h3>
+            </div>
+            <div class="large-12 columns" id="conniMain">
+                <div class="panel">
+                    <div class="row">
+                        <form id="frm2" class="custom">
+                            <div class="large-8 columns">
+                                <label>Topic</label>
+                                <input id="topicInput" type="text" value="/DIT_IoT">
+                            </div>
+                            <div class="large-1 columns">
+                                <label for="publishQoSInput">QoS</label>
+                                <select id="publishQoSInput" class="small">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="large-1 columns">
+                                <label>Retain</label>
+                                <input id="publishRetain" type="checkbox">
+                            </div>
+                            <div class="large-10 columns">
+                                <label>Message</label>
+                                <textarea id="publishPayload">Colm</textarea>
+                            </div>
+                        </form>
+                        <div class="large-2 columns">
+                            <button id = "publishButton" >Publish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="empty"></div>
+            <div class="large-12 columns conniMain">
+                <h3>Subscribe</h3>
+            </div>
+            <div class="large-12 columns" id="conniMain">
+                <div class="panel">
+                    <div class="row">
+                        <form id="frm3" class="custom">
+                            <div class="large-8 columns">
+                                <label>Topic</label>
+                                <input id="topicInputSubscribe" type="text" value="/DIT_IoT">
+                            </div>
+                            <div class="large-1 columns">
+                                <label for="QoSInput">QoS</label>
+                                <select id="QoSInput" class="small">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="large-1 columns"></div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <h4>Subcriptions</h4>
+                    </div>
+                    <div class="row">
+                            <div class="large-2 columns">
+								<button id = "subscribeButton" >Add Subscription</button>
+							</div>
+                            <div class = "large-10 columns" id="subscriptions"></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="empty"></div>
+            <div class="large-12 columns conniMain">
+                <h3>Messages</h3>
+            </div>
+            <div class="large-12 columns" id="conniMain">
+                <div class="panel">
+                    <div class="row">
+						<button class="large-2 columns" id = "disconnectButton" >Disconnect</button>
+						<div class = "large-10 columns" id="messages"></div>                            
+                    </div>
+                </div>
+            </div>
+            <div class="empty"></div>
+          </div>
+        </div>
+       
+        <!-- include link to js files required -->
+        <script type="text/javascript" src="js/paho-mqtt.js"></script>
+        <!--This is a reference to the Paho Javascript client side browser based library-->
+        <script type="text/javascript" src="js/MQTTbrowserConn&PubForHive.js"></script>
+        
+    </body>
+</html>
